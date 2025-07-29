@@ -1,0 +1,12 @@
+# requirements.txt
+
+--index-url https://download.pytorch.org/whl/cpu
+
+torch==2.2.1+cpu
+torchvision==0.17.1+cpu
+torchaudio==2.2.1
+
+transformers
+flask
+flask-cors
+numpy==1.26.4
