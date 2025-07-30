@@ -7,7 +7,7 @@ torchvision==0.17.1+cpu
 torchaudio==2.2.1
 
 # These will be installed from the default PyPI index
-transformers==4.40.1
+
 flask
 flask-cors
 numpy==1.26.4
