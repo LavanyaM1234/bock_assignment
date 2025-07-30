@@ -24,15 +24,16 @@ resource "google_compute_instance" "backend" {
 metadata_startup_script = <<-EOT
   #!/bin/bash
   sudo apt update
-  sudo apt install -y git python3-pip
+  sudo apt install -y git python3-pip python3-venv
 
-  cd /home/${var.vm_user}
-  git clone https://github.com/LavanyaM1234/bock_assignment.git
-  cd bock_assignment/backend
+  # Clone repo to /opt
+  git clone https://github.com/${var.github_username}/bock_assignment.git /opt/gpt2-chat-deployment
 
-  chmod +x start-backend.sh
-  ./start-backend.sh
+  # Run backend setup script
+  chmod +x /opt/gpt2-chat-deployment/backend/start-backend.sh
+  /opt/gpt2-chat-deployment/backend/start-backend.sh
 EOT
+
 
 
 
