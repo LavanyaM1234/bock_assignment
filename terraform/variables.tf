@@ -29,3 +29,7 @@ variable "github_username" {
   type        = string
   description = "GitHub username for cloning the repo"
 }
+variable "vm_user" {
+  description = "Username on the VM instance"
+  default     = "lavanyam_cs22"
+}
