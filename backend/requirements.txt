@@ -1,11 +1,14 @@
---index-url https://pypi.org/simple
+# requirements.txt
+
+# Set PyTorch index for just the PyTorch packages
 --extra-index-url https://download.pytorch.org/whl/cpu
 
 torch==2.2.1+cpu
 torchvision==0.17.1+cpu
 torchaudio==2.2.1
 
-transformers
+# These will be installed from the default PyPI index
+transformers==4.40.1
 flask
 flask-cors
 numpy==1.26.4
