@@ -1,11 +1,13 @@
 # requirements.txt
 
---index-url https://download.pytorch.org/whl/cpu
+# First, install PyTorch from the custom index
+--extra-index-url https://download.pytorch.org/whl/cpu
 
 torch==2.2.1+cpu
 torchvision==0.17.1+cpu
 torchaudio==2.2.1
 
+# The rest come from PyPI (default index)
 transformers
 flask
 flask-cors
