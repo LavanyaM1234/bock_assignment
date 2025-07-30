@@ -62,12 +62,9 @@ metadata_startup_script = <<-EOT
   sudo apt update
   sudo apt install -y git python3-pip python3-venv
 
-  # Clone repo to /opt
-  git clone https://github.com/${var.github_username}/bock_assignment.git /opt/gpt2-chat-deployment
-
-  # Run backend setup script
-  chmod +x /opt/gpt2-chat-deployment/frontend/start-frontend.sh
-  /opt/gpt2-chat-deployment/frontend/start-frontend.sh
+sudo git clone https://github.com/LavanyaM1234/bock_assignment.git /opt/gpt2-chat-deployment
+sudo chmod +x /opt/gpt2-chat-deployment/frontend/start-frontend.sh
+sudo /opt/gpt2-chat-deployment/frontend/start-frontend.sh
 EOT
 
 
