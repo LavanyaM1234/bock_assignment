@@ -11,9 +11,17 @@ cd /opt/gpt2-chat-deployment/backend
 python3 -m venv gpt2env
 source gpt2env/bin/activate
 
-# Install Python dependencies inside venv
+# Upgrade pip
 pip install --upgrade pip
-#pip install -r requirements.txt
+
+# Install packages manually (instead of using requirements.txt)
+pip install torch==2.2.1+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+pip install torchvision==0.17.1+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+pip install torchaudio==2.2.1 --extra-index-url https://download.pytorch.org/whl/cpu
+pip install flask
+pip install flask-cors
+pip install numpy==1.26.4
+pip install transformers==4.40.1
 
 # Start the backend app
 nohup python3 app.py > backend.log 2>&1 &
