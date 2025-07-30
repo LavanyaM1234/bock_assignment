@@ -57,15 +57,9 @@ resource "google_compute_instance" "frontend" {
   }
 
 
-metadata_startup_script = <<-EOT
-  #!/bin/bash
-  sudo apt update
-  sudo apt install -y git python3-pip python3-venv
-
-sudo git clone https://github.com/LavanyaM1234/bock_assignment.git /opt/gpt2-chat-deployment
-sudo chmod +x /opt/gpt2-chat-deployment/frontend/start-frontend.sh
-sudo /opt/gpt2-chat-deployment/frontend/start-frontend.sh
-EOT
+metadata_startup_script = templatefile("${path.module}/frontend_startup.sh.tpl", {
+    backend_ip = google_compute_instance.backend.network_interface[0].access_config[0].nat_ip
+  })
 
 
   tags = ["frontend"]
