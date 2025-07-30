@@ -1,14 +1,19 @@
 #!/bin/bash
-sudo apt update
-sudo apt install -y python3-pip
 
-# Setup virtual environment
-pip3 install virtualenv
-virtualenv gpt2env
+# Update and install required packages
+sudo apt update
+sudo apt install -y python3-venv python3-pip
+
+# Set working directory
+cd /opt/gpt2-chat-deployment/backend
+
+# Create virtual environment
+python3 -m venv gpt2env
 source gpt2env/bin/activate
 
-# Install dependencies
+# Install Python dependencies inside venv
+pip install --upgrade pip
 pip install -r requirements.txt
 
-# Start the backend server
-nohup python3 app.py &
+# Start the backend app
+nohup python3 app.py > backend.log 2>&1 &
