@@ -20,13 +20,20 @@ resource "google_compute_instance" "backend" {
     access_config {}
   }
 
-  metadata_startup_script = <<-EOT
-    sudo apt update
-    sudo apt install -y git
-    git clone https://github.com/${var.github_username}/gpt2-chat-deployment.git /home/${var.github_username}
-    chmod +x /home/${var.github_username}/gpt2-chat-deployment/backend/start-backend.sh
-    /home/${var.github_username}/gpt2-chat-deployment/backend/start-backend.sh
-  EOT
+
+metadata_startup_script = <<-EOT
+  #!/bin/bash
+  sudo apt update
+  sudo apt install -y git python3-pip
+
+  cd /home/${var.vm_user}
+  git clone https://github.com/LavanyaM1234/bock_assignment.git
+  cd bock_assignment/backend
+
+  chmod +x start-backend.sh
+  ./start-backend.sh
+EOT
+
 
   tags = ["backend"]
 }
@@ -47,13 +54,19 @@ resource "google_compute_instance" "frontend" {
     access_config {}
   }
 
-  metadata_startup_script = <<-EOT
-    sudo apt update
-    sudo apt install -y git
-    git clone https://github.com/${var.github_username}/gpt2-chat-deployment.git /home/${var.github_username}
-    chmod +x /home/${var.github_username}/gpt2-chat-deployment/frontend/start-frontend.sh
-    /home/${var.github_username}/gpt2-chat-deployment/frontend/start-frontend.sh
-  EOT
+
+metadata_startup_script = <<-EOT
+  #!/bin/bash
+  sudo apt update
+  sudo apt install -y git
+
+  cd /home/${var.vm_user}
+  git clone https://github.com/LavanyaM1234/bock_assignment.git
+  cd bock_assignment/frontend
+
+  chmod +x start-frontend.sh
+  ./start-frontend.sh
+EOT
 
   tags = ["frontend"]
 }
