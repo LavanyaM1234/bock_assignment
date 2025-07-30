@@ -60,14 +60,14 @@ resource "google_compute_instance" "frontend" {
 metadata_startup_script = <<-EOT
   #!/bin/bash
   sudo apt update
-  sudo apt install -y git python3
+  sudo apt install -y git python3-pip python3-venv
 
-  cd /home/${var.vm_user}
-  git clone https://github.com/LavanyaM1234/bock_assignment.git
-  cd bock_assignment/frontend
+  # Clone repo to /opt
+  git clone https://github.com/${var.github_username}/bock_assignment.git /opt/gpt2-chat-deployment
 
-  chmod +x start-frontend.sh
-  ./start-frontend.sh
+  # Run backend setup script
+  chmod +x /opt/gpt2-chat-deployment/frontend/start-frontend.sh
+  /opt/gpt2-chat-deployment/frontend/start-frontend.sh
 EOT
 
 
