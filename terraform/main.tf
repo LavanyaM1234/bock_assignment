@@ -35,6 +35,7 @@ metadata_startup_script = <<-EOT
 EOT
 
 
+
   tags = ["backend"]
 }
 
@@ -58,7 +59,7 @@ resource "google_compute_instance" "frontend" {
 metadata_startup_script = <<-EOT
   #!/bin/bash
   sudo apt update
-  sudo apt install -y git
+  sudo apt install -y git python3
 
   cd /home/${var.vm_user}
   git clone https://github.com/LavanyaM1234/bock_assignment.git
@@ -67,6 +68,7 @@ metadata_startup_script = <<-EOT
   chmod +x start-frontend.sh
   ./start-frontend.sh
 EOT
+
 
   tags = ["frontend"]
 }
