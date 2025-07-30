@@ -13,7 +13,7 @@ source gpt2env/bin/activate
 
 # Install Python dependencies inside venv
 pip install --upgrade pip
-pip install -r requirements.txt
+#pip install -r requirements.txt
 
 # Start the backend app
 nohup python3 app.py > backend.log 2>&1 &
